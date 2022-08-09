@@ -24,13 +24,9 @@ df = spark.read.format("csv").schema(Schema).option("header", True).option("Deli
 df.printSchema()
 df.show(20, False)
 
-# df.write.csv("data/username_new.csv")
-
-# df.write.parquet("data/user_info.parquet") #.mode("overwrite")
-# df.write.mode('append').parquet(r"C:\Users\suraj\PycharmProjects\Assignment-2\Assignment_2\data\user_info.parquet")
+# Write & Saave in Parquet file:
 
 df.write.mode('overwrite').csv("data/user_csv")
-
 df.write.mode('overwrite').parquet("data/user_parquet")
 print('Reading Parquet file')
 df_parquet = spark.read.parquet("data/user_parquet")
